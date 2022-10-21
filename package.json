@@ -1,0 +1,16 @@
+{
+  "name": "pnpm-cannot-authenticate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kuhltime/some-private-package": "^1.0.0",
+    "cowsay": "^1.5.0"
+  }
+}
