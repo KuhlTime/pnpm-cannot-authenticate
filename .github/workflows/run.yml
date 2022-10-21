@@ -3,11 +3,6 @@ name: 'Execute'
 on:
   push
 
-# Required for secrets.GITHUB_TOKEN
-permissions:
-  packages: write
-  contents: read
-
 env:
   NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -15,11 +10,16 @@ jobs:
   run: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm install
-      - name: Run application
-        run: npm start
+
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
