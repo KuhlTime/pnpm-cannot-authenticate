@@ -8,6 +8,9 @@ permissions:
   packages: write
   contents: read
 
+env:
+  NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   run: 
     runs-on: ubuntu-latest
@@ -16,5 +19,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
       - run: pnpm start
